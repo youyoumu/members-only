@@ -1,0 +1,12 @@
+<h1>Post</h1>
+<%= link_to 'Create new Post',  new_post_path %>
+<%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete } %>
+<% @posts.each do |post| %>
+  <div>
+    <% if user_signed_in? %>
+      <h6> <%= User.find_by(id: post.user_id).email %> </h6>
+    <% end %>
+    <h3> <%= post.title %> </h3>
+    <p> <%= post.content %> </p>
+  </div>
+<% end %>

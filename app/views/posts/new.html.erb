@@ -1,0 +1,16 @@
+<% if @post.errors.any?%>
+  <div id="error_explanation">
+    <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_with model: @post, local: true do |form|%>
+  <%= form.label :title, "Title:" %>
+  <%= form.text_field :title %>
+  <%= form.label :content, "Content:" %>
+  <%= form.text_field :content %>
+  <%= form.submit "Submit", class:"" %>
+<% end %>
